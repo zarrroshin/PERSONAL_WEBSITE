@@ -16,7 +16,7 @@
     <nav class="navbar navbar-expand-md container">
         <!-- nav brand -->
         <a href="#" class="navbar-brand font-weight-bold">
-            <img style="height: 70px; width:70px" src="{% static 'img/logo.png' %}" alt="">
+            <img style="height: 50px; width:50px" src="{% static 'img/logo.png' %}" alt="">
             zarrrosh
         </a>
         <!-- end nav brand -->
@@ -53,21 +53,22 @@
                             </button>
                         </div>
                         <div class="modal-body" id="myModalBody">
-                            <form>
+                            <form method="post">
+                                {% csrf_token %}
                                 <div class="form-group py-5 py-lg-0">
-                                    <input type="text" class="form-control my-2 form-box" required placeholder="نام..."
+                                    <input type="text" name="name" class="form-control my-2 form-box" required placeholder="نام..."
                                            id="InputName">
-                                    <input type="email" class="form-control my-2 form-box" required
+                                    <input type="email" name="email" class="form-control my-2 form-box" required
                                            placeholder="ایمیل..."
                                            id="InputEmail" aria-describedby="emailHelp">
-                                    <input type="text" class="form-control my-2 form-box" placeholder="موضوع..."
+                                    <input type="text" name="topic" class="form-control my-2 form-box" placeholder="موضوع..."
                                            id="InputName">
                                     <textarea name="body" id="message" class="my-2 w-100 form-box"
                                               placeholder="پیام..."></textarea>
                                     <div class="w-100 text-center">
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn message-btn">ارسال پیام</button>
+                                        <button type="submit" class="btn message-btn">ارسال پیام</button>
                                     </div>
 
                                 </div>
@@ -88,14 +89,10 @@
         <div class="row">
             <div class="col-md-10 col-lg-6 my-5">
                 <div class="head-special">
-                    <h3 class="rounded">بگذار کدها به جای تو کار کنند</h3>
-                </div>
-                <div class="head-name">
-                    <h1 class="head-name-faracode">گروه برنامه نویسی فراکد</h1>
                 </div>
                 <div class="head-text">
                     <p class="text-justify">
-                        گروه برنامه نویسی فراکد متشکل از برنامه نویسان مجرب و متعهد آماده ی پیاده سازی و ساخت انواع
+                        گروه برنامه نویسی متشکل از برنامه نویسان مجرب و متعهد آماده ی پیاده سازی و ساخت انواع
                         اپلیکیشن ها و
                         وبسایت های شرکتی و فروشگاهی با بالاترین کیفیت و مناسب ترین قیمت.
                     </p>
@@ -124,11 +121,7 @@
 <!-- our activity -->
 <section class="activity container py-4 section" id="features">
     <div class="activity-head">
-        <span class="d-inline-block font-weight-bold rounded activity-info my-2">فعالیت های ما در یک نگاه</span>
-        <h1 class="activity-name"> گروه برنامه نویسی
-            <span class="font-weight-bold">فراکد</span>
-        </h1>
-        <p class="activity-text">تیم برنامه نویسی فراکد پل میان شما و تکنولوژی!</p>
+        
     </div>
     <div class="row py-5">
         <!-- single activity -->
@@ -176,7 +169,6 @@
             <img src="{% static 'img/digital-1.png' %}" alt="img" class="img-fluid">
         </div>
         <div class="col-12 col-lg-6 py-4 pt-lg-0">
-            <span class="d-inline-block rounded font-weight-bold activity-info my-2">مسئولیت پذیری و وقت شناسی</span>
             <h5 class="activity-name"> وبسیایت و اپلیکیشن شمارو خاص جلوه میده! </h5>
             <p class="text-justify about-us-text">امروزه بیشتر افراد ترجیح میدن بجای تحمل ترافیک و اتلاف کردن زمان، در
                 منزل
@@ -215,7 +207,7 @@
     <div class="animation-project d-none d-md-inline-block"></div>
     <div class="row gallery">
         {% for project in projects %}
-           
+
         <div class="col-12 col-md-6 col-lg-4 py-4 d-flex align-items-center justify-content-center gallery-img">
             <div class="img-pro">
                 <div class="addition">
@@ -228,9 +220,9 @@
                 </div>
             </div>
         </div>
-        
+
         {% endfor %}
-        
+
 
     </div>
 </section>
@@ -264,7 +256,6 @@
 <section class="container contant">
     <div class="row d-flex align-items-center">
         <div class="col-12 col-lg-6">
-            <span class="d-inline-block font-weight-bold rounded contant-info my-2">محدودیت زمانی را از بین ببرید!</span>
             <h5 class="contant-name"> ما کمک می کنیم همیشه در دسترس باشید! </h5>
             <p class="text-justify contant-text">
                 با داشتن وب سایت در 24 ساعت شبانه‌روز، 7روز هفته در کنار مشتری هستید. در واقع وب سایت شما نماینده‌ی
@@ -392,8 +383,6 @@
     <div class="container py-5">
         <div class="row">
             <div class="col-12 col-lg-4 pl-4">
-                <span class="d-inline-block font-weight-bold contant-info my-2">با تکنولوژی دوست باشیم</span>
-                <h5 class="contant-name"> گروه برنامه نویسی فراکد با دریچه ای رو به تکنولوژی روز دنیا!</h5>
                 <p class="text-justify contant-text text-white">
                     اعضای تیم ما روی اهداف تعیین شده توافق دارند و عملکرد خود را با توجه به اهداف می‌سنجند، نه فقط بر
                     اساس میزان
@@ -488,7 +477,7 @@
 <section class="container conect section" id="conect">
     <div class="text-center">
         
-        <h1 class="activity-name"> تماس با ما</h1>
+        <h1 class="activity-name">ارسال پیام</h1>
     </div>
     <div class="row my-5">
         <div class="col-12 col-lg-6">
@@ -497,7 +486,7 @@
         <!--form  -->
         <div class="col-12 col-lg-6">
             <form method="post">
-                 {% csrf_token %} 
+                 {% csrf_token %}
                 <div class="form-group py-5 py-lg-0">
                     <input type="text" name="fname" class="form-control my-2 form-box" placeholder="نام..." required id="InputName">
                     <input type="email" name="email" class="form-control my-2 form-box" required placeholder="ایمیل..."
@@ -522,18 +511,19 @@
             <div class="col-12 col-md-4 d-flex">
                 
             </div>
+            
             <div class="col-12 col-md-4 my-4 my-md-0">
                 <p class="footer-text"> ارتباط با من : </p>
                 <div class="footer-icons">
                     <a href="{{ footer.instagram }}"><i class="fab fa-instagram footer-icon"
                                                                     title="Instagram"></i></a>
                     <a href="{{ footer.telegram }}"><i class="fab fa-telegram footer-icon" title="Telegram"></i></a>
-                    <a href="{{ footer.whatsapp }}" target="_blank"><i class="fab fa-whatsapp footer-icon" 
+                    <a href="{{ footer.whatsapp }}" target="_blank"><i class="fab fa-whatsapp footer-icon"
                                                              title="Whatsapp" ></i></a>
                 </div>
             </div>
             <div class="col-12 col-md-4">
-                <h3 class="footer-title">تماس با ما</h3>
+                <h3 class="footer-title">تماس با من</h3>
                 <p class="footer-text">آدرس پستی: {{ footer.address }}</p>
                 <p class="footer-text">{{ footer.city }}</p>
                 <p class="footer-text">{{ footer.phone_number }}+</p>
